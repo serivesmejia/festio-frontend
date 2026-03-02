@@ -27,7 +27,7 @@ export default function Login() {
       router.push("/");
 
     } catch (err) {
-      setError(err.message);
+      setError((err as Error).message);
     }
   }
 
