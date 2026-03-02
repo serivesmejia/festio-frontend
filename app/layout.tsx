@@ -1,8 +1,11 @@
+// app/layout.tsx  -> Server Component
 export const metadata = {
   title: "fest.io",
 };
 
-export default function RootLayout({ children }) {
+import ClientHeader from "./clientHeader"; // importamos el header que es client component
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
       <body style={{
@@ -11,20 +14,7 @@ export default function RootLayout({ children }) {
         background: "#0f172a",
         color: "white"
       }}>
-        <header style={{
-          display: "flex",
-          justifyContent: "space-between",
-          padding: "20px",
-          background: "#020617"
-        }}>
-          <h2>fest.io 🎵</h2>
-          <nav style={{ display: "flex", gap: "15px" }}>
-            <a href="/" style={{ color: "white" }}>Inicio</a>
-            <a href="/login" style={{ color: "white" }}>Login</a>
-            <a href="/dashboard" style={{ color: "white" }}>Dashboard</a>
-          </nav>
-        </header>
-
+        <ClientHeader /> {/* el header que necesita useState/useEffect */}
         <main style={{ padding: "30px", maxWidth: "900px", margin: "auto" }}>
           {children}
         </main>
